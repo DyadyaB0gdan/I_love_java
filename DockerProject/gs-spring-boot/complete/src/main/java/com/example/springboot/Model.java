@@ -2,8 +2,13 @@ package com.example.springboot;
 
 import com.example.springboot.Repo;
 import com.sun.org.apache.xpath.internal.operations.String;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+
+@Document(collection = "Model")
 public class Model {
+    @Id
     private int id;
     private String str;
 

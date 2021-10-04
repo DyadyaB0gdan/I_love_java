@@ -2,17 +2,19 @@ package com.example.springboot;
 
 import com.example.springboot.Repo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/")
+
 public class HelloController{
-	@Autowired
 	private Repo repo;
 
-	@PostMapping("/add")
+	@PostMapping(value = "/add", produces = { "application/json; charset=utf-8" })
 	public String AddString(@RequestBody Model model) {
 		repo.save(model);
 		return "Sucks ass!";
