@@ -1,9 +1,6 @@
 package com.example.springboot;
 
-import com.example.springboot.Repo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,17 +9,20 @@ import java.util.List;
 @RestController
 
 public class HelloController{
+	@Autowired
 	private Repo repo;
 
-	@PostMapping(value = "/add", produces = { "application/json; charset=utf-8" })
-	public String AddString(@RequestBody Model model) {
+
+	@PostMapping("/add")
+	public Model AddString(@RequestBody Model model) {
 		repo.save(model);
-		return "Sucks ass!";
+		return model;
 	}
 
 	@GetMapping("/str/{id}")
-	public Model findStringById(@PathVariable Integer id){
-		return repo.findStringById(id);
+	public List<Model> findStringById(@PathVariable Integer id){
+//		return repo.findAll();
+		return null;
 
 	}
 	@RequestMapping("/Hello")
